@@ -1,7 +1,8 @@
 # Characters, C-strings, string class
 
 ## Strings Quickstart
-```
+
+``` c++
 #include <string>
 ```
 
@@ -15,6 +16,7 @@
 | `string firstName(fullName, 0, 7);` | Defines a string object named `firstName`, initialized with a substring of the string `fullName`. The substring is seven characters long, beginning at position 0. |
 
 ## String Operators
+
 | Operator  | Description                                                                                                                                   |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------|
 | `>>`      | Extracts characters from a stream and inserts them into the string. Characters are copied until a whitespace or the end of the string is encountered. |
@@ -24,8 +26,8 @@
 | `+`       | Returns a string that is the concatenation of the two string operands.                                                                         |
 | `[]`      | Implements array-subscript notation, as in `name[x]`. A reference to the character in the `x` position is returned.                            |
 
-
 ## Character functions
+
 | Character Function | Description                                                                                                                                       |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 | `isalpha`          | Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns 0 if the argument is not a letter.                           |
@@ -38,13 +40,15 @@
 | `isspace`          | Returns true (a nonzero number) if the argument is a whitespace character. Whitespace characters are any of the following: (list to follow).       |
 
 ## C-string Functions
-```
+
+Array of chars elements terminated by the null character `'\0'`.
+
+``` c++
 #include <cstring>
 char name[] = "Thomas Edison";
 int length;
 length = strlen(name);
 ```
-
 
 | Function  | Description                                                                                                                                                                                                                                                                      |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -57,6 +61,7 @@ length = strlen(name);
 | `strstr`  | Accepts two C-strings or pointers to two C-strings as arguments. Searches for the first occurrence of string2 in string1. If found, returns a pointer to it. Otherwise, returns `nullptr` (address 0). Example Usage: `cout << strstr(string1, string2);`                          |
 
 ## C-string to Type Conversions
+
 | Function | Description                                                                                                                                                  |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `atoi`   | Accepts a C-string as an argument. The function converts the C-string to an integer and returns that value. Example Usage: `int num = atoi("4569");`           |
@@ -64,6 +69,7 @@ length = strlen(name);
 | `atof`   | Accepts a C-string as an argument. The function converts the C-string to a double and returns that value. Example Usage: `double fnum = atof("3.14159");`       |
 
 ## Type to String Conversions
+
 | Function                       | Description                                                                                                                |
 |--------------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | `to_string(int value)`         | Accepts an `int` argument and returns that argument converted to a string object.                                           |
@@ -77,6 +83,7 @@ length = strlen(name);
 | `to_string(long double value)` | Accepts a `long double` argument and returns that argument converted to a string object.                                    |
 
 ## String Module Functions
+
 | Member Function                 | Example                           | Description                                                                                                          |
 |----------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------|
 | `mystring.append(n, 'z');`       | `mystring.append(n, 'z');`        | Appends `n` copies of 'z' to `mystring`.                                                                             |
@@ -110,6 +117,3 @@ length = strlen(name);
 | `mystring.size();`               | `mystring.size();`                | Returns the length of the string in `mystring`.                                                                      |
 | `mystring.substr(x, n);`         | `mystring.substr(x, n);`          | Returns a copy of a substring that is `n` characters long and begins at position `x` of `mystring`.                  |
 | `mystring.swap(str);`            | `mystring.swap(str);`             | Swaps the contents of `mystring` with `str`.                                                                         |
-
-
-

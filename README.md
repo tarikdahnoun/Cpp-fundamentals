@@ -19,3 +19,7 @@ C++ code fundamentals
 ### Sorting Algorithms
 
 ### Search algorithms
+
+### Additional resources
+
+* https://www.mathbits.com/MathBits/CompSci/compsci.htm
