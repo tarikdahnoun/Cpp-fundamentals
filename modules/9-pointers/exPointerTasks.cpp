@@ -67,9 +67,9 @@ int main() {
     p2 = &a[1];
     *p2 = y;
     // 17. Using cout, display the address of the first element in a
-    cout << "a[0]: " << a[0] << endl;
+    cout << "a[0]: " << &a[0] << endl;
     // 18. Using cout, display the address of the second element in a
-    cout << "a[1]: " << a[1] << endl;
+    cout << "a[1]: " << &a[1] << endl;
     // 19. Use p1, p2, and temp to swap the values in the two elements of array ‘a’. (first point p1 at a[0], then point p2 at a[1]. After this the swapping steps should look very similar to step 10.)
     p1 = &a[0];
     p2 = &a[1];
