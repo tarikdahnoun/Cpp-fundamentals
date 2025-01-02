@@ -20,6 +20,21 @@ C++ code fundamentals
 
 ### Search algorithms
 
+### Pointers
+
+### Chars
+
+### Structs
+
+### Classes 1
+
+### Classes 2
+
+### Overloading
+
+### Inheritance & Polymorphism
+
 ### Additional resources
 
 * https://www.mathbits.com/MathBits/CompSci/compsci.htm
+* https://stackoverflow.com/questions/1241399/what-is-a-h-gch-file
