@@ -84,8 +84,22 @@ bool LinkedList<ItemType>::insert(int newPosition, const ItemType& newEntry)
       // This implementation ignores newPosition, and always put the new
       // item at the beginning of the list.
       // Your assignment is to correctly insert the item into newPosition
-      newNodePtr->setNext(headPtr);
-      headPtr = newNodePtr;
+      if (newPosition == 1)
+      {
+         newNodePtr->setNext(headPtr);
+         headPtr = newNodePtr;
+      }
+      else
+      {
+         Node<ItemType>* prevPtr = headPtr;
+         for (int i = 1; i < newPosition - 1; i++)
+         {
+            prevPtr = prevPtr->getNext();
+         }
+
+         newNodePtr->setNext(prevPtr->getNext());
+         prevPtr->setNext(newNodePtr);
+      }
 
       itemCount++;  // Increase count of entries
    }  // end if
