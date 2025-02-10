@@ -17,6 +17,7 @@ class LinkedList : public ListInterface<ItemType>
 {
 private:
    Node<ItemType>* headPtr; // Pointer to first node in the chain;
+   Node<ItemType>* tailPtr; // Pointer to last node in the chain;
                             // (contains the first entry in the list)
    int itemCount;           // Current count of list items 
    
