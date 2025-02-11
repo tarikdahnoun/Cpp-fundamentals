@@ -240,7 +240,30 @@ Node<ItemType>* LinkedList<ItemType>::getNodeAt(int position) const
    return curPtr;
 }  // end getNodeAt
 
+template<class ItemType>
+void LinkedList<ItemType>::reverse()
+{
+   if (headPtr == nullptr || headPtr == tailPtr)
+   {
+      return;
+   }
 
+   Node<ItemType>* current = headPtr;
+   Node<ItemType>* tmp = nullptr;
+
+   while (current != nullptr)
+   {
+      tmp = current->getPrev();
+      current->setPrev(current->getNext());
+      current->setNext(tmp);
+
+      current = current->getPrev();
+   }
+
+   tmp = headPtr;
+   headPtr = tailPtr;
+   tailPtr = tmp;
+}
 
 
 // End of implementation file.  To get this to compile on hills,
