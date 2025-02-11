@@ -15,13 +15,6 @@ void displayList(ListInterface<string>* listPtr)
       cout << listPtr->getEntry(pos) << " ";
    } // end for
 	cout << endl << endl;
-
-	cout << "Now, backwards " << endl;
-   for (int pos = listPtr->getLength(); pos >= 1; pos--)
-   {
-      cout << listPtr->getEntry(pos) << " ";
-   } // end for
-	cout << endl << endl;
 }  // end displayList
 
 void listTester()
