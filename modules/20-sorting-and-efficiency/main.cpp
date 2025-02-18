@@ -8,14 +8,22 @@ int main()
     Sort sorter;
 
     vector<int> numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
-    sorter.bubbleSort(numArr);
+    sorter.bubbleSortInc(numArr);
     numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
-    sorter.selectionSort(numArr);
+    sorter.bubbleSortDec(numArr);
+    numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
+    sorter.selectionSortInc(numArr);
+    numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
+    sorter.selectionSortDec(numArr);
 
     vector<string> strArr = {"apple", "orange", "banana", "grape", "cherry"};
-    sorter.bubbleSort(strArr);
+    sorter.bubbleSortInc(strArr);
     strArr = {"apple", "orange", "banana", "grape", "cherry"};
-    sorter.selectionSort(strArr);
+    sorter.bubbleSortDec(strArr);
+    strArr = {"apple", "orange", "banana", "grape", "cherry"};
+    sorter.selectionSortInc(strArr);
+    strArr = {"apple", "orange", "banana", "grape", "cherry"};
+    sorter.selectionSortDec(strArr);
 
     return 0;
 }
