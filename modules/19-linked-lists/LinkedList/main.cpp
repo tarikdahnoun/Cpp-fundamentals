@@ -43,6 +43,13 @@ void listTester()
    listPtr->setEntry(3, "XXX");
    displayList(listPtr);
    
+   // Test reverse method
+   cout << "Reversing the list:" << endl;
+   listPtr->reverse();
+   displayList(listPtr);
+
+   delete listPtr;
+
 } // end listTester
 
 

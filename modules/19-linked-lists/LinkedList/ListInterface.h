@@ -57,5 +57,8 @@ public:
     @param position  The list position of the entry to replace.
     @param newEntry  The replacement entry. */
    virtual void setEntry(int position, const ItemType& newEntry) = 0;
+
+   virtual void reverse() = 0;
+
 }; // end ListInterface
 #endif

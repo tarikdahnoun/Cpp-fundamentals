@@ -10,9 +10,10 @@
 #include <cstdlib>
 
 template<class ItemType>
-LinkedList<ItemType>::LinkedList() : headPtr(nullptr), itemCount(0)
+LinkedList<ItemType>::LinkedList() : headPtr(nullptr), tailPtr(nullptr), itemCount(0)
 {
    headPtr = nullptr;
+   tailPtr = nullptr;
    itemCount = 0;
 }  // end default constructor
 
@@ -22,7 +23,10 @@ LinkedList<ItemType>::LinkedList(const LinkedList<ItemType>& aList) : itemCount(
    Node<ItemType>* origChainPtr = aList.headPtr;  // Points to nodes in original chain
 
    if (origChainPtr == nullptr)
+   {
       headPtr = nullptr;  // Original list is empty
+      tailPtr = nullptr;  // Original list is empty
+   }
    else
    {
       // Copy first node
@@ -42,6 +46,7 @@ LinkedList<ItemType>::LinkedList(const LinkedList<ItemType>& aList) : itemCount(
          
          // Link new node to end of new chain
          newChainPtr->setNext(newNodePtr); 
+         newNodePtr->setPrev(newChainPtr); 
          
          // Advance pointer to new last node      
          newChainPtr = newChainPtr->getNext();
@@ -84,7 +89,16 @@ bool LinkedList<ItemType>::insert(int newPosition, const ItemType& newEntry)
       if (newPosition == 1)
       {
          newNodePtr->setNext(headPtr);
+         if (headPtr != nullptr)
+         {
+            headPtr->setPrev(newNodePtr);
+         }
+         newNodePtr->setPrev(nullptr);
          headPtr = newNodePtr;
+         if (itemCount == 0)
+         {
+            tailPtr = newNodePtr;
+         }         
       }
       else
       {
@@ -95,6 +109,15 @@ bool LinkedList<ItemType>::insert(int newPosition, const ItemType& newEntry)
          }
 
          newNodePtr->setNext(prevPtr->getNext());
+         newNodePtr->setPrev(prevPtr);
+         if (prevPtr->getNext() != nullptr)
+         {
+            prevPtr->getNext()->setPrev(newNodePtr);
+         }
+         else
+         {
+            tailPtr = newNodePtr;
+         }
          prevPtr->setNext(newNodePtr);
       }
 
@@ -116,22 +139,42 @@ bool LinkedList<ItemType>::remove(int position)
          // Remove the first node in the chain
          curPtr = headPtr; // Save pointer to node
          headPtr = headPtr->getNext();
+         if (headPtr != nullptr)
+         {
+            headPtr->setPrev(nullptr);
+         }
+         else
+         {
+            tailPtr = nullptr;
+         }         
+      }
+      else if (position == itemCount)
+      {
+         curPtr = tailPtr;
+         tailPtr = tailPtr->getPrev();
+
+         if (tailPtr != nullptr)
+         {
+            tailPtr->setNext(nullptr);
+         }
+         else
+         {
+            headPtr = nullptr;
+         }         
       }
       else
       {
-         // Find node that is before the one to delete
-         Node<ItemType>* prevPtr = getNodeAt(position - 1);
+         Node<ItemType>* curPtr = getNodeAt(position);
+         Node<ItemType>* prevPtr = curPtr->getPrev();
+         Node<ItemType>* nextPtr = curPtr->getNext();
          
-         // Point to node to delete
-         curPtr = prevPtr->getNext();
-         
-         // Disconnect indicated node from chain by connecting the
-         // prior node with the one after
-         prevPtr->setNext(curPtr->getNext());
+         prevPtr->setNext(nextPtr);
+         nextPtr->setPrev(prevPtr);
       }  // end if
       
       // Return node to system
       curPtr->setNext(nullptr);
+      curPtr->setPrev(nullptr);
       delete curPtr;
       curPtr = nullptr;
       
@@ -197,7 +240,30 @@ Node<ItemType>* LinkedList<ItemType>::getNodeAt(int position) const
    return curPtr;
 }  // end getNodeAt
 
+template<class ItemType>
+void LinkedList<ItemType>::reverse()
+{
+   if (headPtr == nullptr || headPtr == tailPtr)
+   {
+      return;
+   }
 
+   Node<ItemType>* current = headPtr;
+   Node<ItemType>* tmp = nullptr;
+
+   while (current != nullptr)
+   {
+      tmp = current->getPrev();
+      current->setPrev(current->getNext());
+      current->setNext(tmp);
+
+      current = current->getPrev();
+   }
+
+   tmp = headPtr;
+   headPtr = tailPtr;
+   tailPtr = tmp;
+}
 
 
 // End of implementation file.  To get this to compile on hills,
