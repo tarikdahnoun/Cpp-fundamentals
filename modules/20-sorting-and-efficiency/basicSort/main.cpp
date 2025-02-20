@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Sort.h"
+#include "Sort.cpp"
 
 using namespace std;
 
@@ -9,29 +9,29 @@ int main()
 
     vector<int> numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
     sorter.bubbleSortInc(numArr);
-    numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
-    sorter.bubbleSortDec(numArr);
-    numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
-    sorter.selectionSortInc(numArr);
-    numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
-    sorter.selectionSortDec(numArr);
-    numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
-    sorter.insertionSortInc(numArr);
-    numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
-    sorter.insertionSortDec(numArr);
+    // numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
+    // sorter.bubbleSortDec(numArr);
+    // numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
+    // sorter.selectionSortInc(numArr);
+    // numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
+    // sorter.selectionSortDec(numArr);
+    // numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
+    // sorter.insertionSortInc(numArr);
+    // numArr = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
+    // sorter.insertionSortDec(numArr);
 
     vector<string> strArr = {"apple", "orange", "banana", "grape", "cherry"};
     sorter.bubbleSortInc(strArr);
     strArr = {"apple", "orange", "banana", "grape", "cherry"};
-    sorter.bubbleSortDec(strArr);
-    strArr = {"apple", "orange", "banana", "grape", "cherry"};
-    sorter.selectionSortInc(strArr);
-    strArr = {"apple", "orange", "banana", "grape", "cherry"};
-    sorter.selectionSortDec(strArr);
-    strArr = {"apple", "orange", "banana", "grape", "cherry"};
-    sorter.insertionSortInc(strArr);
-    strArr = {"apple", "orange", "banana", "grape", "cherry"};
-    sorter.insertionSortDec(strArr);
+    // sorter.bubbleSortDec(strArr);
+    // strArr = {"apple", "orange", "banana", "grape", "cherry"};
+    // sorter.selectionSortInc(strArr);
+    // strArr = {"apple", "orange", "banana", "grape", "cherry"};
+    // sorter.selectionSortDec(strArr);
+    // strArr = {"apple", "orange", "banana", "grape", "cherry"};
+    // sorter.insertionSortInc(strArr);
+    // strArr = {"apple", "orange", "banana", "grape", "cherry"};
+    // sorter.insertionSortDec(strArr);
     
     return 0;
 }
