@@ -66,6 +66,7 @@ void Sort::bubbleSortArrDec(ItemType arr[], int first, int last)
             {
                 swap(arr[i], arr[i + 1]);
                 swapped = true;
+                counter += 3;
             }
         }
     }
@@ -87,6 +88,7 @@ void Sort::bubbleSortVecDec(vector<ItemType>& arr, int first, int last)
             {
                 swap(arr[i], arr[i + 1]);
                 swapped = true;
+                counter += 3;
             }
         }
     }
@@ -108,6 +110,7 @@ void Sort::bubbleSortArrInc(ItemType arr[], int first, int last)
             {
                 swap(arr[i], arr[i + 1]);
                 swapped = true;
+                counter += 3;
             }
         }
     }
@@ -129,6 +132,7 @@ void Sort::bubbleSortVecInc(vector<ItemType>& arr, int first, int last)
             {
                 swap(arr[i], arr[i + 1]);
                 swapped = true;
+                counter += 3;
             }
         }
     }
@@ -207,16 +211,16 @@ apple, orange, banana, grape, cherry
 
 Bubble Sort Array Decreasing 
 ------------------------------- 
-Total accesses using array: 72
+Total accesses using array: 135
 543, 210, 201, 180, 150, 49, 9, 8, 4, 0
-Total accesses using array: 12
+Total accesses using array: 30
 orange, grape, cherry, banana, apple
 
 Bubble Sort Array Increasing 
 ------------------------------- 
-Total accesses using array: 90
+Total accesses using array: 225
 0, 4, 8, 9, 49, 150, 180, 201, 210, 543
-Total accesses using array: 20
+Total accesses using array: 50
 apple, banana, cherry, grape, orange
 
 Unsorted Vector 
@@ -226,15 +230,15 @@ apple, orange, banana, grape, cherry
 
 Bubble Sort Vector Decreasing 
 ------------------------------- 
-Total accesses using vector: 72
+Total accesses using vector: 135
 543, 210, 201, 180, 150, 49, 9, 8, 4, 0
-Total accesses using vector: 12
+Total accesses using vector: 30
 orange, grape, cherry, banana, apple
 
 Bubble Sort Vector Increasing 
 ------------------------------- 
-Total accesses using vector: 90
+Total accesses using vector: 225
 0, 4, 8, 9, 49, 150, 180, 201, 210, 543
-Total accesses using vector: 20
+Total accesses using vector: 50
 apple, banana, cherry, grape, orange
 */
