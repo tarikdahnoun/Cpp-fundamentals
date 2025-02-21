@@ -207,16 +207,16 @@ apple, orange, banana, grape, cherry
 
 Bubble Sort Array Decreasing 
 ------------------------------- 
-Total accesses using array: 66
+Total accesses using array: 72
 543, 210, 201, 180, 150, 49, 9, 8, 4, 0
-Total accesses using array: 23
+Total accesses using array: 12
 orange, grape, cherry, banana, apple
 
 Bubble Sort Array Increasing 
 ------------------------------- 
-Total accesses using array: 108
+Total accesses using array: 90
 0, 4, 8, 9, 49, 150, 180, 201, 210, 543
-Total accesses using array: 28
+Total accesses using array: 20
 apple, banana, cherry, grape, orange
 
 Unsorted Vector 
@@ -226,15 +226,15 @@ apple, orange, banana, grape, cherry
 
 Bubble Sort Vector Decreasing 
 ------------------------------- 
-Total accesses using vector: 66
+Total accesses using vector: 72
 543, 210, 201, 180, 150, 49, 9, 8, 4, 0
-Total accesses using vector: 23
+Total accesses using vector: 12
 orange, grape, cherry, banana, apple
 
 Bubble Sort Vector Increasing 
 ------------------------------- 
-Total accesses using vector: 108
+Total accesses using vector: 90
 0, 4, 8, 9, 49, 150, 180, 201, 210, 543
-Total accesses using vector: 28
+Total accesses using vector: 20
 apple, banana, cherry, grape, orange
 */
