@@ -1,8 +1,5 @@
-// Tarik Dahnoun
-// Discussion 4
-// Efficiency of Operations
-
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -14,7 +11,19 @@ class Sort
         void printArr(ItemType arr[], int, int) const;
 
         template <class ItemType>
+        void printVec(vector<ItemType>&, int, int) const;
+
+        template <class ItemType>
         void insertionSortArrDec(ItemType arr[], int, int);
+        
+        template <class ItemType>
+        void insertionSortVecDec(vector<ItemType>&, int, int);
+
+        template <class ItemType>
+        void insertionSortArrInc(ItemType arr[], int, int);
+        
+        template <class ItemType>
+        void insertionSortVecInc(vector<ItemType>&, int, int);
 };
 
 template <class ItemType>
@@ -31,23 +40,35 @@ void Sort::printArr(ItemType arr[], int first, int last) const
 }
 
 template <class ItemType>
+void Sort::printVec(vector<ItemType>& arr, int first, int last) const
+{
+    for (int i = first; i < last; i++)
+    {
+        cout << arr[i];
+        if (i != last - 1)
+        {
+            cout << ", ";
+        }    }
+}
+
+
+template <class ItemType>
 void Sort::insertionSortArrDec(ItemType arr[], int first, int last)
 {
     int counter = 0;
     for (int unsorted = first + 1; unsorted <= last; unsorted++)
     {
-        counter++;  
+        counter++;
         ItemType nextItem = arr[unsorted];
-
         int loc = unsorted;
         while (loc > first)
         {
             counter++;
-            if (!(arr[loc - 1] < nextItem))
+            if(!(arr[loc - 1] < nextItem))
             {
                 break;
             }
-            counter++;
+
             counter++;
             arr[loc] = arr[loc - 1];
             loc--;
@@ -55,104 +76,192 @@ void Sort::insertionSortArrDec(ItemType arr[], int first, int last)
         counter++;
         arr[loc] = nextItem;
     }
-    cout << "Total accesses to sort: " << counter;
+    cout << "Total accesses using array: " << counter << endl;
 }
+
+template <class ItemType>
+void Sort::insertionSortVecDec(vector<ItemType>& arr, int first, int last)
+{
+    int counter = 0;
+    for (int unsorted = first + 1; unsorted <= last; unsorted++)
+    {
+        counter++;
+        ItemType nextItem = arr[unsorted];
+        int loc = unsorted;
+        while ((loc > first))
+        {
+            counter++;
+            if(!(arr[loc - 1] < nextItem))
+            {
+                break;
+            }
+
+            counter++;
+            arr[loc] = arr[loc - 1];
+            loc--;
+        }
+        counter++;
+        arr[loc] = nextItem;
+    }
+    cout << "Total accesses using vector: " << counter << endl;
+}
+
+
+template <class ItemType>
+void Sort::insertionSortArrInc(ItemType arr[], int first, int last)
+{
+    int counter = 0;
+    for (int unsorted = first + 1; unsorted <= last; unsorted++)
+    {
+        counter++;
+        ItemType nextItem = arr[unsorted];
+        int loc = unsorted;
+        while (loc > first)
+        {
+            counter++;
+            if(!(arr[loc - 1] > nextItem))
+            {
+                break;
+            }
+
+            counter++;
+            arr[loc] = arr[loc - 1];
+            loc--;
+        }
+        counter++;
+        arr[loc] = nextItem;
+    }
+    cout << "Total accesses using array: " << counter << endl;
+}
+
+template <class ItemType>
+void Sort::insertionSortVecInc(vector<ItemType>& arr, int first, int last)
+{
+    int counter = 0;
+    for (int unsorted = first + 1; unsorted <= last; unsorted++)
+    {
+        counter++;
+        ItemType nextItem = arr[unsorted];
+        int loc = unsorted;
+        while ((loc > first))
+        {
+            counter++;
+            if(!(arr[loc - 1] > nextItem))
+            {
+                break;
+            }
+
+            counter++;
+            arr[loc] = arr[loc - 1];
+            loc--;
+        }
+        counter++;
+        arr[loc] = nextItem;
+    }
+    cout << "Total accesses using vector: " << counter << endl;
+}
+
 
 int main()
 {
-    cout << "Insertion Sort Array Decreasing: O(n^2) \n";
-    cout << "------------------------------- \n";
-
     Sort sorter;
 
-    cout << "numArr1 unsorted (random): ";
-    int numArr1[] = {32, 64, 4, 256, 1, 512, 8, 128, 2, 16};
-    const int FIRST1 = 0;
-    const int LAST1 = (sizeof(numArr1) / sizeof(numArr1[0]));
-    sorter.printArr(numArr1, FIRST1, LAST1);
-    cout << " -> ";
-    sorter.insertionSortArrDec(numArr1, FIRST1, LAST1 - 1);
-    cout << endl << "Sorted: ";
-    sorter.printArr(numArr1, FIRST1, LAST1);
+    cout << "Unsorted Array \n";
+    cout << "------------------------------- \n";
+    int numArr[] = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
+    const int FIRST = 0;
+    const int LAST = (sizeof(numArr) / sizeof(numArr[0]));
+    sorter.printArr(numArr, FIRST, LAST);
+    cout << endl;
+    string strArr[] = {"apple", "orange", "banana", "grape", "cherry"};
+    int sizeStrs = sizeof(strArr) / sizeof(strArr[0]);
+    sorter.printArr(strArr, FIRST, sizeStrs);
     cout << endl << endl;
 
-    cout << "numArr2 unsorted (worst case): ";
-    int numArr2[] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
-    const int FIRST2 = 0;
-    const int LAST2 = (sizeof(numArr2) / sizeof(numArr2[0]));
-    sorter.printArr(numArr2, FIRST2, LAST2);
-    cout << " -> ";
-    sorter.insertionSortArrDec(numArr2, FIRST2, LAST2 - 1);
-    cout << endl << "Sorted: ";
-    sorter.printArr(numArr2, FIRST2, LAST2);
+    cout << "Insertion Sort Array Decreasing \n";
+    cout << "------------------------------- \n";
+    sorter.insertionSortArrDec(numArr, FIRST, LAST - 1);
+    sorter.printArr(numArr, FIRST, LAST);
+    cout << endl;
+    sorter.insertionSortArrDec(strArr, FIRST, sizeStrs - 1);
+    sorter.printArr(strArr, FIRST, sizeStrs);
     cout << endl << endl;
 
-    cout << "numArr3 unsorted (best case): ";
-    int numArr3[] = {512, 256, 128, 64, 32, 16, 8, 4, 2, 1};
-    const int FIRST3 = 0;
-    const int LAST3 = (sizeof(numArr3) / sizeof(numArr3[0]));
-    sorter.printArr(numArr3, FIRST3, LAST3);
-    cout << " -> ";
-    sorter.insertionSortArrDec(numArr3, FIRST3, LAST3 - 1);
-    cout << endl << "Sorted: ";
-    sorter.printArr(numArr3, FIRST3, LAST3);
+    cout << "Insertion Sort Array Increasing \n";
+    cout << "------------------------------- \n";
+    sorter.insertionSortArrInc(numArr, FIRST, LAST - 1);
+    sorter.printArr(numArr, FIRST, LAST);
+    cout << endl;
+    sorter.insertionSortArrInc(strArr, FIRST, sizeStrs - 1);
+    sorter.printArr(strArr, FIRST, sizeStrs);
     cout << endl << endl;
 
-    cout << "numArr4 single element: ";
-    int numArr4[] = {42};
-    const int FIRST4 = 0;
-    const int LAST4 = (sizeof(numArr4) / sizeof(numArr4[0]));
-    sorter.printArr(numArr4, FIRST4, LAST4);
-    cout << " -> ";
-    sorter.insertionSortArrDec(numArr4, FIRST4, LAST4 - 1);
-    cout << endl << "Sorted: ";
-    sorter.printArr(numArr4, FIRST4, LAST4);
+    cout << "Unsorted Vector \n";
+    cout << "------------------------------- \n";
+    vector<int> numVec = {0, 201, 150, 180, 210, 49, 8, 543, 4, 9};
+    sorter.printVec(numVec, FIRST, LAST);
+    cout << endl;
+    vector<string> strVec = {"apple", "orange", "banana", "grape", "cherry"};
+    sorter.printVec(strVec, FIRST, strVec.size());
     cout << endl << endl;
 
-    cout << "numArr5 two elements (worst case): ";
-    int numArr5[] = {24, 42};
-    const int FIRST5 = 0;
-    const int LAST5 = (sizeof(numArr5) / sizeof(numArr5[0]));
-    sorter.printArr(numArr5, FIRST5, LAST5);
-    cout << " -> ";
-    sorter.insertionSortArrDec(numArr5, FIRST5, LAST5 - 1);
-    cout << endl << "Sorted: ";
-    sorter.printArr(numArr5, FIRST5, LAST5);
+    cout << "Insertion Sort Vector Decreasing \n";
+    cout << "------------------------------- \n";
+    sorter.insertionSortVecDec(numVec, FIRST, numVec.size() - 1);
+    sorter.printVec(numVec, FIRST, numVec.size());
+    cout << endl;
+    sorter.insertionSortVecDec(strVec, FIRST, strVec.size() - 1);
+    sorter.printVec(strVec, FIRST, strVec.size());
     cout << endl << endl;
 
-    cout << "numArr6 unsorted (random): ";
-    int numArr6[] = {32, 64, 2048, 4, 256, 1, 512, 8, 4096, 128, 2, 1024, 16};
-    const int FIRST6 = 0;
-    const int LAST6 = (sizeof(numArr6) / sizeof(numArr6[0]));
-    sorter.printArr(numArr6, FIRST6, LAST6);
-    cout << " -> ";
-    sorter.insertionSortArrDec(numArr6, FIRST6, LAST6 - 1);
-    cout << endl << "Sorted: ";
-    sorter.printArr(numArr6, FIRST6, LAST6);
+    cout << "Insertion Sort Vector Increasing \n";
+    cout << "------------------------------- \n";
+    sorter.insertionSortVecInc(numVec, FIRST, numVec.size() - 1);
+    sorter.printVec(numVec, FIRST, numVec.size());
+    cout << endl;
+    sorter.insertionSortVecInc(strVec, FIRST, strVec.size() - 1);
+    sorter.printVec(strVec, FIRST, strVec.size());
     cout << endl << endl;
 
     return 0;
 }
 
-/* SAMPLE OUTPUT.
-Insertion Sort Array Decreasing: O(n^2) 
+/*
+Unsorted Array 
 ------------------------------- 
-numArr1 unsorted (random): 32, 64, 4, 256, 1, 512, 8, 128, 2, 16 -> Total accesses to sort: 87
-Sorted: 512, 256, 128, 64, 32, 16, 8, 4, 2, 1
+0, 201, 150, 180, 210, 49, 8, 543, 4, 9
+apple, orange, banana, grape, cherry
 
-numArr2 unsorted (worst case): 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 -> Total accesses to sort: 153
-Sorted: 512, 256, 128, 64, 32, 16, 8, 4, 2, 1
+Insertion Sort Array Decreasing 
+------------------------------- 
+Total accesses using array: 66
+543, 210, 201, 180, 150, 49, 9, 8, 4, 0
+Total accesses using array: 23
+orange, grape, cherry, banana, apple
 
-numArr3 unsorted (best case): 512, 256, 128, 64, 32, 16, 8, 4, 2, 1 -> Total accesses to sort: 27
-Sorted: 512, 256, 128, 64, 32, 16, 8, 4, 2, 1
+Insertion Sort Array Increasing 
+------------------------------- 
+Total accesses using array: 108
+0, 4, 8, 9, 49, 150, 180, 201, 210, 543
+Total accesses using array: 28
+apple, banana, cherry, grape, orange
 
-numArr4 single element: 42 -> Total accesses to sort: 0
-Sorted: 42
+Unsorted Vector 
+------------------------------- 
+0, 201, 150, 180, 210, 49, 8, 543, 4, 9
+apple, orange, banana, grape, cherry
 
-numArr5 two elements (worst case): 24, 42 -> Total accesses to sort: 5
-Sorted: 42, 24
+Insertion Sort Vector Decreasing 
+------------------------------- 
+Total accesses using vector: 66
+543, 210, 201, 180, 150, 49, 9, 8, 4, 0
+Total accesses using vector: 23
+orange, grape, cherry, banana, apple
 
-numArr6 unsorted (random): 32, 64, 2048, 4, 256, 1, 512, 8, 4096, 128, 2, 1024, 16 -> Total accesses to sort: 153
-Sorted: 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1
-
+Insertion Sort Vector Increasing 
+------------------------------- 
+Total accesses using vector: 108
+0, 4, 8, 9, 49, 150, 180, 201, 210, 543
+Total accesses using vector: 28
+apple, banana, cherry, grape, orange
 */
