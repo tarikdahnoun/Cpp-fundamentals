@@ -27,14 +27,50 @@ Time complexity (produced from algos/main.cpp):
 
 ## Bubble Sort
 
+Time: `O(n^2)`
+
+Space: `O(1)`
+
+Swap each pair of i and i+1 if they are not in the correct order.
+
+![Bubble sort steps](./images/bubbleSort.drawio.png)
+
 ## Selection Sort
+
+Time: `O(n^2)`
+
+Space: `O(1)`
+
+Swap each i with the minimum value between i and n.
+
+![Selection sort steps](./images/selectionSort.drawio.png)
 
 ## Insertion Sort
 
+For all `i` from [1, ..., n], shift elements and store `arr[i]` in the `i` index if `arr[i] < arr[j]` where `j` is [0, ..., i].
+
+Time: `O(n^2)`
+
+Space: `O(1)`
+
+![Insertion sort steps](./images/insertionSort.drawio.png)
+
 ## Merge Sort
+
+Time: `O(n * log(n))` or precisely `2 * n * (1 + log(n))`
+
+Space: `O(n)`
+
+Recursively, split the array into halfs and merge in sorted order.
 
 ![Merge sort steps](./images/mergeSort.drawio.png)
 
 ## Quick Sort
+
+Time: `O(n * log(n))`
+
+Space: `O(1)`
+
+Recursively sort around a selected pivot value in the array.
 
 ![Quick sort steps](./images/quickSort.drawio.png)
