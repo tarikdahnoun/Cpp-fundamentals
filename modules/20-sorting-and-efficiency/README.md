@@ -33,4 +33,8 @@ Time complexity (produced from algos/main.cpp):
 
 ## Merge Sort
 
+![Merge sort steps](./images/mergeSort.drawio.png)
+
 ## Quick Sort
+
+![Quick sort steps](./images/quickSort.drawio.png)
