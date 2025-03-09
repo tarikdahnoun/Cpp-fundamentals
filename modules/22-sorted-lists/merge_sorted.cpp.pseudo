@@ -1,0 +1,53 @@
+// given
+
++isEmpty(): boolean
++getLength(): integer
++insertSorted(newEntry: ItemType): void
++removeSorted(entry: ItemType): void
++remove(position:integer): boolean
++getEntry(position: integer): ItemType
++getPosition(entry: ItemType): integer              
++clear(): void
+
+// merge two sorted arrays
+
+SortedList<int> listOne;
+SortedList<int> listTwo;
+SortedList<int> combinedList;
+
+lenA = listOne.getLength()
+lenB = listTwo.getLength()
+posA = 1
+posB = 1
+
+if lenA == 0 and lenB == 0:
+    WARN "nothing to sort"
+    return combinedList
+
+if lenA == 0:
+    for posB to lenB
+        combinedList.insertSorted(listTwo.getEntry(posB))
+    return combinedList
+
+
+if lenB == 0:
+    for posA to lenA
+        combinedList.insertSorted(listOne.getEntry(posA))
+    return combinedList
+
+while posA <= lenA and posB <= lenB:
+    if listOne.getEntry(posA) <= listTwo.getEntry(posB):
+        combinedList.insertSorted(listOne.getEntry(posA))
+        posA++
+    else:
+        combinedList.insertSorted(listTwo.getEntry(posB))
+        posB++
+
+while posA <= lenA:
+    combinedList.insertSorted(listOne.getEntry(posA))
+    posA++
+
+
+while posB <= lenB:
+    combinedList.insertSorted(listTwo.getEntry(posB))
+    posB++
