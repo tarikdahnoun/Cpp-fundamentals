@@ -62,19 +62,20 @@ bool SortedListHasA<ItemType>::removeSorted(const ItemType& anEntry)
 template<class ItemType>
 int SortedListHasA<ItemType>::getPosition(const ItemType& anEntry) const
 {
-   for (int i = 1; i <= getLength(); i++)
+   int position = 1;
+   int length = getLength();
+
+   while (position <= length && anEntry < getEntry(position))
    {
-      if (anEntry == getEntry(i))
-      {
-         return i;
-      }
-      else if (anEntry > getEntry(i))
-      {
-         return -i;
-      }
+      position++;
    }
 
-   return -(getLength() + 1);
+   if (position > length || anEntry != getEntry(position))
+   {
+      return -position;
+   }
+
+   return position;
 }  // end getPosition
 
 //=====================
