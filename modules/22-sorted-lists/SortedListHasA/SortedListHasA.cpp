@@ -8,7 +8,7 @@
 #include "LinkedList.h"
 #include <cassert>
 #include <cmath>
-  
+
 template<class ItemType>
 SortedListHasA<ItemType>::SortedListHasA()
 {
@@ -62,13 +62,19 @@ bool SortedListHasA<ItemType>::removeSorted(const ItemType& anEntry)
 template<class ItemType>
 int SortedListHasA<ItemType>::getPosition(const ItemType& anEntry) const
 {
-   // this version of getPosition always returns 1.  Fix it so that it implements
-   // getPosition() correctly.  It should return either the position of the given 
-   // entry, if it occurs in the sorted list, or the position where the entry 
-   // would occur, but as a negative integer.  
-   int position = 1;
+   for (int i = 1; i <= getLength(); i++)
+   {
+      if (anEntry == getEntry(i))
+      {
+         return i;
+      }
+      else if (anEntry > getEntry(i))
+      {
+         return -i;
+      }
+   }
 
-   return position;
+   return -(getLength() + 1);
 }  // end getPosition
 
 //=====================

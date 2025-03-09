@@ -2,6 +2,7 @@
 //  Copyright (c) 2013 __Pearson Education__. All rights reserved.
 
 #include <iostream>
+#include <limits>
 #include <string>
 #include "SortedListHasA.h" // ADT sorted list operations
 
@@ -10,6 +11,15 @@ using namespace std;
 void displayList(SortedListInterface<string>* listPtr)
 {
 	cout << "The sorted list contains " << endl;
+   for (int pos = 1; pos <= listPtr->getLength(); pos++)
+   {
+      cout << listPtr->getEntry(pos) << " ";
+   } // end for
+	cout << endl << endl;
+}  // end displayList
+
+void displayList(SortedListInterface<int>* listPtr)
+{
    for (int pos = 1; pos <= listPtr->getLength(); pos++)
    {
       cout << listPtr->getEntry(pos) << " ";
@@ -172,19 +182,57 @@ void listOpsTester(SortedListInterface<string>* listPtr)
    }  // end try/catch
 } // end listOpsTester
 
+
+void highScores()
+{
+	SortedListHasA<int> list;
+   int items[] = {95, 42, 64};
+   int size = 3;
+   int newScore = 0;
+
+   for (int i = 0; i < size; i++)
+   {
+      list.insertSorted(items[i]);
+	}
+
+   while (newScore >= 0)
+   {
+      cout << "Current scores: ";
+      displayList(&list);
+
+      cout << "Enter a score? ";
+      cin >> newScore;
+
+      if (cin.fail())
+      {
+         cin.clear();
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+         cout << "Invalid input. Please enter a valid number.\n";
+         continue;
+      }
+
+      if (newScore >= 0)
+      {
+         list.insertSorted(newScore);
+      }
+   }
+}
+
 int main()
 {
-   copyConstructorTester();
+   highScores();
 
-   SortedListInterface<int>* intList = new SortedListHasA<int>();
+   // copyConstructorTester();
 
-	SortedListInterface<string>* listPtr = new SortedListHasA<string>();
-	cout << "Testing the Link-Based Sorted List:" << endl;
-	sortedListTester(listPtr);
-   cout << "======================================" << endl;
+   // SortedListInterface<int>* intList = new SortedListHasA<int>();
+
+	// SortedListInterface<string>* listPtr = new SortedListHasA<string>();
+	// cout << "Testing the Link-Based Sorted List:" << endl;
+	// sortedListTester(listPtr);
+   // cout << "======================================" << endl;
    
-	cout << "\nTesting the List Operations:" << endl;
-	listOpsTester(listPtr);
+	// cout << "\nTesting the List Operations:" << endl;
+	// listOpsTester(listPtr);
 
    return 0;
 }  // end main
