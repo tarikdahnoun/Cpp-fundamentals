@@ -83,3 +83,18 @@ int main() {
 
     return 0;
 }
+
+/* SAMPLE OUTPUT
+Enter infix expression: 3/0
+Postfix Expression: 30/
+Error: Division by zero is not allowed.
+Result: 0
+
+Enter infix expression: 5+5-(3*9)/2
+Postfix Expression: 55+39*2/-
+Result: -3
+
+Enter infix expression: 3/2
+Postfix Expression: 32/
+Result: 1
+*/
