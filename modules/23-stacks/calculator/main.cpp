@@ -52,6 +52,11 @@ int evaluatePostfix(const string &postfix) {
             int b = values.peek(); values.pop();
             int a = values.peek(); values.pop();
 
+            if (c == '/' && b == 0) {
+                cout << "Error: Division by zero is not allowed." << endl;
+                return 0;
+            }
+
             switch (c) {
                 case '+': values.push(a + b); break;
                 case '-': values.push(a - b); break;
