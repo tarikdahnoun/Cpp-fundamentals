@@ -11,8 +11,10 @@ bool isPalindrome(string inputStr)
 
     for (char c : inputStr)
     {
-        S.push(c);
-        Q.enqueue(c);
+        if (!S.push(c) || !Q.enqueue(c))
+        {
+            throw std::runtime_error("Input string exceeds maximum stack or queue size.");
+        }
     }
 
     for (int i = 0; i < inputStr.length(); i++)
@@ -23,20 +25,36 @@ bool isPalindrome(string inputStr)
         }
 
         S.pop();
-        Q.dequeue();        
+        Q.dequeue();   
     }
 
     return true;
 }
 
-
-int main()
+void palindromeInterface()
 {
     string s1 = "racecar";
     string s2 = "notracecar";
+    string sLong = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
-    cout << "s1 isPalindrome: " << isPalindrome(s1) << endl;
-    cout << "s2 isPalindrome: " << isPalindrome(s2) << endl;
+    try {
+        cout << "Value: '" << s1 << (isPalindrome(s1) ? "' is a palindrome" : "' is not a palindrome") << endl;
+        cout << "Value: '" << s2 << (isPalindrome(s2) ? "' is a palindrome" : "' is not a palindrome") << endl;
+        cout << "Value: '" << sLong << (isPalindrome(sLong) ? "' is a palindrome" : "' is not a palindrome") << endl;
+    } catch (const std::runtime_error& e) {
+        cerr << "\nException caught: " << e.what() << endl;
+    }
+}
 
+int main()
+{
+    palindromeInterface();
     return 0;
 }
+
+/* SAMPLE OUTPUT
+Value: 'racecar' is a palindrome
+Value: 'notracecar' is not a palindrome
+Value: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Exception caught: Input string exceeds maximum stack or queue size.
+*/

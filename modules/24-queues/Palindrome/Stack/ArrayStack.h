@@ -6,7 +6,7 @@
 #include <iostream>
 #include <stdexcept>
 
-const int DEFAULT_CAPACITY = 10;
+const int DEFAULT_CAPACITY = 50;
 
 template<class ItemType>
 class ArrayStack : public StackInterface<ItemType> {
