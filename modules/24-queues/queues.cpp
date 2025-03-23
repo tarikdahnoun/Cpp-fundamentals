@@ -112,3 +112,23 @@ int main()
 
    return 0;
 }
+
+/* SAMPLE OUTPUT
+Test queue isEmpty (should be true): 1
+Testing dequeue on empty (should be false): 0
+Test queue, peek, and dequeue
+Added char (should be a): a
+Added char (should be b): b
+Added char (should be c): c
+Testing dequeue can empty the array, isEmpty (should be true): 1
+Testing circular queue behavior:
+Added char: 1, 2, 3
+
+Queue isEmpty (should be false): 0
+Attempt to add '4' to queue (should fail): Failed
+Dequeue and peek (should be 2): 2
+Attempt to add '4' to queue (should succeed): Success
+Queue contents after wrap-around:
+2 3 4 
+Queue isEmpty (should be true): 1
+*/
