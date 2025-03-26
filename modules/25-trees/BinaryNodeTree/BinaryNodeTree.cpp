@@ -7,6 +7,8 @@
 #include "BinaryNode.h" 
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 //////////////////////////////////////////////////////////////
 //      Protected Utility Methods Section
@@ -57,6 +59,35 @@ BinaryNode<ItemType>* BinaryNodeTree<ItemType>::balancedAdd(BinaryNode<ItemType>
       return subTreePtr;
    }  // end if
 }  // end balancedAdd
+
+template<class ItemType>
+BinaryNode<ItemType>* BinaryNodeTree<ItemType>::randomAdd(BinaryNode<ItemType>* subTreePtr,
+                                                          BinaryNode<ItemType>* newNodePtr)
+{
+   srand(std::time(nullptr));  // seed
+   bool randomLeftRight = rand() % 2;
+
+   if (subTreePtr == nullptr)
+      return newNodePtr;
+   else
+   {
+      BinaryNode<ItemType>* leftPtr = subTreePtr->getLeftChildPtr();
+      BinaryNode<ItemType>* rightPtr = subTreePtr->getRightChildPtr();
+      
+      if (randomLeftRight)
+      {
+         rightPtr = randomAdd(rightPtr , newNodePtr);
+         subTreePtr->setRightChildPtr(rightPtr );
+      }
+      else
+      {
+         leftPtr = randomAdd(leftPtr, newNodePtr);
+         subTreePtr->setLeftChildPtr(leftPtr);
+      }  // end if
+      
+      return subTreePtr;
+   }  // end if
+}  // end randomAdd
 
 template<class ItemType>
 BinaryNode<ItemType>* BinaryNodeTree<ItemType>::moveValuesUpTree(BinaryNode<ItemType>* subTreePtr)
@@ -298,7 +329,8 @@ template<class ItemType>
 bool BinaryNodeTree<ItemType>::add(const ItemType& newData)
 {
    BinaryNode<ItemType>* newNodePtr = new BinaryNode<ItemType>(newData);
-   rootPtr = balancedAdd(rootPtr, newNodePtr);
+   rootPtr = randomAdd(rootPtr, newNodePtr);
+   // rootPtr = balancedAdd(rootPtr, newNodePtr);
    return true;
 }  // end add
 
