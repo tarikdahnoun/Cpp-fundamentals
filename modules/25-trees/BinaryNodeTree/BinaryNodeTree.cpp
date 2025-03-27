@@ -64,7 +64,6 @@ template <class ItemType>
 BinaryNode<ItemType> *BinaryNodeTree<ItemType>::randomAdd(BinaryNode<ItemType> *subTreePtr,
                                                           BinaryNode<ItemType> *newNodePtr)
 {
-    srand(std::time(nullptr)); // seed
     bool randomLeftRight = rand() % 2;
 
     if (subTreePtr == nullptr)
@@ -244,8 +243,10 @@ void BinaryNodeTree<ItemType>::inorder(void visit(ItemType &), BinaryNode<ItemTy
 //      Constructor and Destructor Section
 //////////////////////////////////////////////////////////////
 
-template <class ItemType>
-BinaryNodeTree<ItemType>::BinaryNodeTree() : rootPtr(nullptr) {} // end default constructor
+template <class ItemType> BinaryNodeTree<ItemType>::BinaryNodeTree() : rootPtr(nullptr)
+{
+    srand(std::time(nullptr));
+} // end default constructor
 
 template <class ItemType> BinaryNodeTree<ItemType>::BinaryNodeTree(const ItemType &rootItem)
 {
