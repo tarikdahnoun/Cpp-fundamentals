@@ -1,0 +1,242 @@
+1. Beginning with an empty binary search tree, what binary search tree is formed when you insert the following values in the order given?  Use the algorithm discussed in videos/pdfs and textbook; namely search the binary search tree for the new entry, and insert the new entry at the position it would have been found.  
+A, B, W, J, N, T, E
+
+
+1a. A is root
+A
+
+1a. B > A
+A
+ \
+  B   
+
+1a. W > A
+1b. W > B
+A
+ \
+  B   
+   \
+    W
+
+1a. J > A
+1b. J > B
+1c. J < W
+A
+ \
+  B   
+   \
+    W
+   /
+  J
+
+1a. N > A
+1b. N > B
+1c. N < W
+1d. N > J
+A
+ \
+  B
+   \
+    W
+   /
+  J
+   \
+    N
+
+1a. T > A
+1b. T > B
+1c. T < W
+1d. T > J
+1e. T > N
+A
+ \
+  B
+   \
+    W
+   /
+  J
+   \
+    N
+     \
+      T
+
+1a. E > A
+1b. E > B
+1c. E < W
+1d. E < J
+A
+ \
+  B
+   \
+    W
+   /
+  J
+ / \
+E   N
+     \
+      T
+
+2.  Same as question 1, but with the following values:
+B, T, E, A, N, W, J
+
+2a. B is root
+B
+
+2a. T > B
+B
+ \
+  T
+
+2a. E > B
+2b. E < T
+B
+ \
+  T
+ /
+E
+
+2a. A < B
+  B
+ / \
+A   T
+   /
+  E
+
+2a. N > B
+2b. N < T
+2c. N > E
+  B
+ / \
+A   T
+   /
+  E
+   \
+    N
+
+2a. W > B
+2b. W > T
+  B
+ / \
+A   T
+   / \
+  E   W
+   \
+    N
+
+2a. J > B
+2b. J < T
+2c. J > E
+2d. J < N
+  B
+ / \
+A   T
+   / \
+  E   W
+   \
+    N
+   /
+  J
+
+3.  What is the maximum number of nodes in a binary search tree of height 3?  4?  h?
+
+3a. h = 3
+Maximum number of nodes = 2^(3) - 1 = 7
+           1
+     /          \
+    2            3
+  /   \        /   \
+ 4    5       6     7
+
+
+3b. h = 4
+           1
+     /          \
+    2            3
+  /   \        /   \
+  4    5      6     7
+ / \  / \    / \   / \
+ 8 9 10 11  12 13 14 15
+Maximum number of nodes = 2^(4) - 1 = 15
+
+3c. Maximum number of nodes = 2^(h) - 1
+
+4.  In which order could you insert these values into an empty binary search tree in order to create a binary search tree with height 3? A, B, W, J, N, T, E.  
+
+4a. Given theres 7 elements, which is the maximum number of elements in a tree of h = 3, we need to make a perfect BST by recursively getting the medians.
+J, B, A, E, T, N, W
+     J
+   /   \
+  B     T
+ / \   / \
+A   E N   W
+
+5.  Consider the binary search tree below.  If you start with this binary search tree, what does it look like after you insert the nodes 80, 65, 75, 45, 35, and 25 in that order?
+      60
+     /  \
+    20   70
+   /  \
+  10  40
+      / \
+     30  50
+
+5a. 80
+      60
+     /  \
+    20   70
+   /  \    \
+  10  40    80
+      / \
+     30  50
+
+5b. 65
+        60
+     /     \
+    20      70
+   /  \    /  \
+  10  40  65   80
+      / \
+     30  50
+
+
+5c. 75
+        60
+     /     \
+    20      70
+   /  \    /  \
+  10  40  65   80
+      / \      /
+     30  50   75
+
+
+5d. 45
+        60
+     /     \
+    20      70
+   /  \    /  \
+  10  40  65   80
+      / \      /
+     30  50   75
+        /
+       45
+
+5e. 35
+          60
+     /          \
+    20          70
+   /  \        /  \
+  10   40     65  80
+      /   \       /
+     30    50    75
+       \   /
+       35 45
+
+5f. 25
+          60
+     /          \
+    20          70
+   /  \        /  \
+  10   40     65  80
+      /   \       /
+     30    50    75
+    /  \   /
+   25  35 45
