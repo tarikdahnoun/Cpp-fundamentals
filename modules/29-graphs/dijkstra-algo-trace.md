@@ -6,3 +6,6 @@ Trace Dijkstra's algorithm for the graph below, starting at node SFO.
 
 ![airports](./airports.png)
 
+Answer:
+
+![dijkstra_algo_trace](./dijkstra_algo_trace.png)
