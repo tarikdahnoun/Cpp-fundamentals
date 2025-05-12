@@ -18,3 +18,13 @@ int main() {
 
     return 0;
 }
+
+/* SAMPLE OUTPUT
+Cheapest flights from SFO:
+To SFO: $0
+To LAX: $120
+To LAS: $150
+To PHX: $195
+To DEN: $345
+To JFK: $470
+*/
